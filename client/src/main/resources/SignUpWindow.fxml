@@ -1,0 +1,31 @@
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<VBox fx:controller="client.SignUpController"
+      xmlns:fx="http://javafx.com/fxml" alignment="center">
+
+    <HBox>
+        <Label text="Login:" minWidth="100"/>
+        <TextField fx:id="loginField" HBox.hgrow="ALWAYS"/>
+    </HBox>
+
+    <HBox>
+        <Label text="Nickname:" minWidth="100"/>
+        <TextField fx:id="nicknameField" HBox.hgrow="ALWAYS"/>
+    </HBox>
+
+    <HBox>
+        <Label text="Password:" minWidth="100"/>
+        <TextField fx:id="passwordField" promptText="password" HBox.hgrow="ALWAYS"/>
+    </HBox>
+
+
+    <HBox>
+        <Label text="Confirm password:" minWidth="100"/>
+        <TextField fx:id="confirmPasswordField" promptText="password" HBox.hgrow="ALWAYS"/>
+    </HBox>
+
+    <TextArea fx:id="textArea" VBox.vgrow="ALWAYS" editable="false" focusTraversable="false"/>
+
+    <Button text="Sign up!" onAction="#tryToSignUp"/>
+
+</VBox>
