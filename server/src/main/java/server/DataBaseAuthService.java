@@ -5,19 +5,14 @@ import java.sql.*;
 public class DataBaseAuthService implements AuthService {
 
     private Connection connection;
-    private PreparedStatement psSelect;
-    private ResultSet rs;
 
     public DataBaseAuthService() {
         try {
             Class.forName("org.sqlite.JDBC");
             connection = DriverManager.getConnection("jdbc:sqlite:database.db");
-            psSelect = connection.
-                    prepareStatement("SELECT * FROM users WHERE login = ?;");
         } catch (SQLException | ClassNotFoundException throwables) {
             throwables.printStackTrace();
         }
-
     }
 
     @Override
@@ -72,11 +67,19 @@ public class DataBaseAuthService implements AuthService {
                 count++;
             }
 
+            rs.close();
             return count > 0;
 
         } catch (SQLException throwables) {
             throwables.printStackTrace();
             return false;
+        }
+    }
+    public void onClose() {
+        try {
+            connection.close();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
         }
     }
 }

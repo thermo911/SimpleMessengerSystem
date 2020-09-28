@@ -50,4 +50,8 @@ public class SimpleAuthService implements AuthService {
         users.add(new UserData(login, password, nickname));
         return true;
     }
+
+    @Override
+    public void onClose() {}
+
 }
