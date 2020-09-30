@@ -60,7 +60,7 @@ public class Controller implements Initializable {
     private Stage stage;
     private Stage signUpStage;
 
-    private FileHistoryHandler fileHistoryHandler;
+    //private FileHistoryHandler fileHistoryHandler;
 
     public void setAuthenticated(boolean authenticated) {
         this.authenticated = authenticated;
@@ -139,7 +139,7 @@ public class Controller implements Initializable {
                             textArea.appendText(str + "\n");
                         }
 
-                        fileHistoryHandler = new FileHistoryHandler(nickname);
+                        /*fileHistoryHandler = new FileHistoryHandler(nickname);
                         ArrayList<String> list = fileHistoryHandler.getLines();
 
                         if(list.size()<=100) {
@@ -156,7 +156,7 @@ public class Controller implements Initializable {
                             while(it.hasNext()) {
                                 textArea.appendText(it.next()+"\n");
                             }
-                        }
+                        }*/
 
                         //цикл работы
                         while (true) {
@@ -178,7 +178,7 @@ public class Controller implements Initializable {
                                 }
                             } else {
                                 textArea.appendText(str + "\n");
-                                fileHistoryHandler.appendLine(str);
+                                //fileHistoryHandler.appendLine(str);
                             }
                         }
                     } catch (IOException e) {
@@ -186,7 +186,7 @@ public class Controller implements Initializable {
                     } finally {
                         System.out.println("Мы отключились от сервера");
                         setAuthenticated(false);
-                        fileHistoryHandler.write();
+                        //fileHistoryHandler.write();
                         try {
                             socket.close();
                         } catch (IOException e) {
