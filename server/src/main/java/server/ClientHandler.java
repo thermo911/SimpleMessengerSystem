@@ -75,7 +75,7 @@ public class ClientHandler {
                             }
                         }
                     }
-                    socket.setSoTimeout(120000);
+                    socket.setSoTimeout(0);
 
                     //handling messages cycle
                     while (true) {

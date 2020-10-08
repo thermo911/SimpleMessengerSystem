@@ -47,7 +47,7 @@ public class Controller implements Initializable {
     public ListView<String> clientList;
 
     private final String IP_ADDRESS = "localhost";
-    private final int PORT = 8189;
+    private final int PORT = 8170;
 
     private Socket socket;
     private DataInputStream in;
@@ -110,7 +110,7 @@ public class Controller implements Initializable {
                 @Override
                 public void run() {
                     try {
-                        //цикл аутентификации
+                        //цикл аутентификаци
                         while (true) {
                             String str = in.readUTF();
 
@@ -139,25 +139,6 @@ public class Controller implements Initializable {
                             textArea.appendText(str + "\n");
                         }
 
-                        /*fileHistoryHandler = new FileHistoryHandler(nickname);
-                        ArrayList<String> list = fileHistoryHandler.getLines();
-
-                        if(list.size()<=100) {
-                            for(String s:list) {
-                                textArea.appendText(s+"\n");
-                            }
-                        } else {
-                            Iterator<String> it = list.iterator();
-                            int i = 0;
-                            while(i<100) {
-                                it.next();
-                                i++;
-                            }
-                            while(it.hasNext()) {
-                                textArea.appendText(it.next()+"\n");
-                            }
-                        }*/
-
                         //цикл работы
                         while (true) {
                             String str = in.readUTF();
@@ -178,7 +159,6 @@ public class Controller implements Initializable {
                                 }
                             } else {
                                 textArea.appendText(str + "\n");
-                                //fileHistoryHandler.appendLine(str);
                             }
                         }
                     } catch (IOException e) {
@@ -186,7 +166,6 @@ public class Controller implements Initializable {
                     } finally {
                         System.out.println("Мы отключились от сервера");
                         setAuthenticated(false);
-                        //fileHistoryHandler.write();
                         try {
                             socket.close();
                         } catch (IOException e) {
